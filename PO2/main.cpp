@@ -1,5 +1,5 @@
 #include <iostream>
-#include "CLista.h"
+#include "CList.h"
 #include <ctime>
 #include <vector>
 
@@ -7,39 +7,37 @@ using namespace std;
 
 int main()
 {
-	CLista Lista;
+	CList List;
 	clock_t start;
 	double duration;
 	start = clock();
-	//while (1)
-	//{
-		for (int i = 0; i < 100000; i++)
-		{
-			Lista.dodaj(i, i, i);
-		}
-		for (int i = 0; i < 100000; i++)
-		{
-			Lista.usun(1);
-		}
-	//}
 
-		duration = (clock() - start)/(double)CLOCKS_PER_SEC;
-		cout <<"Lista wskaznikowa: " <<  duration << endl;
+	for (int i = 0; i < 100000; i++)
+	{
+		List.addElement(i, i, i);
+	}
+	for (int i = 0; i < 100000; i++)
+	{
+		List.deleteElement(1);
+	}
 
-		start = clock();
+	duration = (clock() - start)/(double)CLOCKS_PER_SEC;
+	cout <<"List:\t" <<  duration << endl;
 
-		vector <int> Wektor;
-		for (int i = 0; i < 100000; i++)
-		{
-			Wektor.push_back(i);
-		}
-		for (int i = 0; i < 100000; i++)
-		{
-			Wektor.erase(Wektor.begin());
-		}
+	start = clock();
 
-		duration = (clock() - start) / (double)CLOCKS_PER_SEC;
-		cout <<"Wektor: " << duration << endl;
+	vector <int> Wektor;
+	for (int i = 0; i < 100000; i++)
+	{
+		Wektor.push_back(i);
+	}
+	for (int i = 0; i < 100000; i++)
+	{
+		Wektor.erase(Wektor.begin());
+	}
+
+	duration = (clock() - start) / (double)CLOCKS_PER_SEC;
+	cout <<"Vector:\t" << duration << endl;
 
 	return 0;
 }
